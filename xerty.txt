@@ -1,0 +1,8 @@
+script
+https://www.improvescripting.com/how-to-get-network-card-properties-using-powershell/
+
+Get-CimInstance -Class CIM_NetworkAdapter -ComputerName localhost -ErrorAction Stop | Select-Object *
+
+Get-CimInstance -Class CIM_NetworkAdapter -ComputerName (Get-Content -Path C:\Temp\servers.txt) -ErrorAction Stop | Select-Object * | Out-GridView
+
+Get-NetworkInfo -filename "OKFINservers.txt" -errorlog -client "OK" -solution "FIN" -Verbose | Select-Object 'Environment', 'Logical name', 'Server name', 'Product name', 'Name', 'Manufacturer', 'Physical adapter', 'Speed', 'MAC Address', 'GUID', 'Adapter type', 'Description', 'Device ID', 'Net connection ID', 'Net connection status', 'Net enabled', 'Service name', 'Status', 'Status info', 'IP', 'Collected' | Out-GridView
